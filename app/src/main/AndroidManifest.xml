@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yootom.dylinkapp">
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <!--이 액션은 intent에 첨부되는 data의 URI가 가리키는 데이터를 사용자에게 보여주는 액션-->
+                <action android:name="android.intent.action.VIEW" />
+                <!--이 카테고리를 선언함으로써 앱 이름을 지정하지 않고 딥링크를 사용할 수 있게 해줌-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--이 카테고리는 웹 브라우저에서 링크를 열 수 있게 함-->
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dylink.yootom.com"
+                    android:pathPrefix="/watch/..*"
+                    android:scheme="https" />
+
+                <data
+                    android:host="dylink.yootom.com"
+                    android:pathPrefix="/watch/..*"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
